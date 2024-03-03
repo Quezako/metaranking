@@ -4,22 +4,28 @@
     vote
 </li>
 @endsection
-@section('header')
-<h3><i class="fa fa-list"></i> vote </h3>
-@endsection
-@section('tools')
-<a class="btn btn-secondary" href="{{route('vote.create')}}">
-    <span class="fa fa-plus"></span>
-</a>
-@endsection
 
 @section('content')
+<h3><i class="fa fa-list"></i> vote <a class="btn btn-secondary" href="{{route('vote.create')}}">
+    <span class="fa fa-plus"></span>
+</a></h3>
 <div class="row">
-    @foreach($records as $record)
-    <div class="col-sm-6">
-        @include('cards.vote')
+    <div class="card card-default">
+        <div class="card-block">
+            <table class="table table-bordered table-striped">
+                <tbody>
+                        <tr>
+                            <th>User</th>
+                            <th>Tag</th>
+                            <th>Mood</th>
+                            <th>Actions</th>
+                        </tr>
+                        @foreach($records as $record)
+                            @include('cards.vote')
+                        @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
-    @endforeach
 </div>
-{!! $records->render() !!}
 @endSection

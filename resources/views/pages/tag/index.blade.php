@@ -4,22 +4,29 @@
     tag
 </li>
 @endsection
-@section('header')
-<h3><i class="fa fa-list"></i> tag </h3>
-@endsection
-@section('tools')
-<a class="btn btn-secondary" href="{{route('tag.create')}}">
-    <span class="fa fa-plus"></span>
-</a>
-@endsection
 
 @section('content')
+
+<h3><i class="fa fa-list"></i> tag <a class="btn btn-secondary" href="{{route('tag.create')}}">
+    <span class="fa fa-plus"></span>
+</a></h3>
 <div class="row">
-    @foreach($records as $record)
-    <div class="col-sm-6">
-        @include('cards.tag')
+    <div class="card card-default">
+        <div class="card-block">
+            <table class="table table-bordered table-striped">
+                <tbody>
+                        <tr>
+                            <th>Label</th>
+                            <th>Tag1 Id</th>
+                            <th>Tag2 Id</th>
+                            <th>Actions</th>
+                        </tr>
+                        @foreach($records as $record)
+                            @include('cards.tag')
+                        @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
-    @endforeach
 </div>
-{!! $records->render() !!}
 @endSection

@@ -94,8 +94,11 @@ class VoteController extends Controller
         $model = new Vote;
         $model->fill($request->all());
 
-        if ($model->save()) {
+        $voteWeight = Vote::where('user_id', auth()->id())->max('weight');
+        $model->weight = $voteWeight + 1;
+        $model->user_id = auth()->id();
 
+        if ($model->save()) {
             session()->flash('app_message', 'Vote saved successfully');
             return redirect()->route('vote.index');
         } else {
@@ -112,9 +115,9 @@ class VoteController extends Controller
      */
     public function edit(Edit $request, Vote $vote)
     {
-        $tag = Tag::all(['id']);
-        $mood = Mood::all(['id']);
-        $users = User::all(['id']);
+        $tag = Tag::all();
+        $mood = Mood::all(['id', 'label']);
+        $users = User::all(['id', 'name']);
 
         return view('pages.vote.edit', [
             'model' => $vote,

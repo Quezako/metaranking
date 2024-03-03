@@ -3,7 +3,6 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\VoteController;
-use App\Http\Controllers\TagAssocController;
 use App\Http\Controllers\MoodController;
 use Illuminate\Support\Facades\Route;
 

@@ -27,7 +27,6 @@ class Store extends FormRequest
         return [
 			'tag_id' => 'required|exists:tag,id|numeric',
 			'mood_id' => 'required|exists:mood,id|numeric',
-			'user_id' => 'required|exists:users,id|numeric',
         ];
     }
 

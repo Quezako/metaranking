@@ -27,6 +27,7 @@
                 </div>
             </div>
 
+            @if (Auth::user())
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
@@ -104,6 +105,16 @@
                     </x-responsive-nav-link>
                 </form>
             </div>
+            @else
+            <div class="hidden sm:flex sm:items-right sm:ms-6">
+                <x-nav-link :href="route('login')" :active="request()->routeIs('login')">
+                    {{ __('Login') }}
+                </x-nav-link>
+                <x-nav-link :href="route('register')" :active="request()->routeIs('register')">
+                    {{ __('Register') }}
+                </x-nav-link>
+            </div>
+            @endif
         </div>
     </div>
 </nav>

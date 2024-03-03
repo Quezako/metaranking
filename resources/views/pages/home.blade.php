@@ -10,9 +10,9 @@
             <table class="table table-bordered table-striped">
                 <tbody>
                         <tr>
-                            <th>User Id</th>
-                            <th>Tag Assoc Id</th>
-                            <th>Mood Id</th>
+                            <th>User</th>
+                            <th>Tag</th>
+                            <th>Mood</th>
                             <th>Actions</th>
                         </tr>
                         @foreach($votes as $record)
@@ -35,8 +35,8 @@
                 <tbody>
                         <tr>
                             <th>Label</th>
-                            <th>Tag1 Id</th>
-                            <th>Tag2 Id</th>
+                            <th>Tag1</th>
+                            <th>Tag2</th>
                             <th>Actions</th>
                         </tr>
                         @foreach($tags as $record)
