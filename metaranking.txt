@@ -1,0 +1,163 @@
+TAGS
+- ? association de tags : disney + princess, nami + nico robin, nami + rtenzo, nami + Looking at viewer.
+- tags immuables : date de naissance, couleur des yeux, mensurations
+- ? sous-tags : personnage 1 : femme rousse. personnage 2 : femme blonde futa. décor : plage.
+- ? comment associer personnages + yeux + bleus + cheveux + verts ?
+-> !? pas de hiérarchie de tags, juste des associations ?
+-> résultat : associer un ensemble de tags : personnage + blue + eyes, sans hiérarchie.
+- type de tag : série, groupe de personnages, description physique, etc.
+- ! réalité vs envie. ex : nami::hair::red VS nami::hair::blue
+- date de naissance VS date actuelle dans l'histoire
+- ! évolution du personnage dans le temps. ex: cicatrice à tel âge, ou tel volume ou tel épisode
+- variantes du même personnage. ex: harley queen, selon dessinateur, etc.
+- ? synonymes ?
+- tags concernant les réactions de l'utilisateur sur un élément : sentiments, classement, etc.
+- synonymes, coquilles, pluriel, etc.
+- traductions
+- personnage = traits induits : miruko = cheveux blancs + longs, oreilles de lapin, muscles, tenue + leotard + blanc, etc.
+-> ne préciser les traits que s'ils ne sont pas canons : miruko + bikini, cheveux + rose
+VOTE
+- pouvoir voter pour le type de tags également
+-> ex : media::animation création::one piece character::nami
+-> voter pour l'association de tag avec l'item et non pas pour l'item en soi.
+- voter pour les tags eux même, afin de connaître les tags les plus populaires
+- vote : tag, mood, weight (pour classement, ex top 100)
+SEARCH
+- voir les stats moyennes de utilisateurs, et pouvoir découvrir par similarité ou découverte totale
+- classer en fonction d'un critère : personnage : séduisant, méchant, amusant, brun, puissant, etc.
+- filtrer tags négatifs
+- tri multi critères, par ordre personnalisé : nb votes, tag1 tag2..., nb vues, popularité sources externes, etc.
+- tri / filtre sur les voteurs : sexe, age, régon, etc.
+- date du vote : stats par année, mois, jour
+-> proposer un système qui suggère les tags les plus associés, ou les plus populaire, ainsi qu'un moteur de recherche :
+- genre de tags : physique
+- ou recherche blue -> suggestion eyes
+- ou recherche eyes -> suggestion blue
+- etc.
+- dans quel ordre afficher une double association de tags ?
+-> par défaut, par votes, mais pouvoir chosir un autre ordre
+- fuzzy
+- menu des tags : s'inspirer de r34, amazon
+MEDIA
+- pouvoir afficher des ressources pour aider au jugement : images, classement d'autres sites, popularité sur google, wikipedia, fandom, etc.
+- afficher les contenus payants selon les abonnements. ex : images sur patreon, etc.
+- association d'éléments autres que tags (texte) : images, sons, mots prononcés, musique, vidéos, 3d (modèle, squelette, pose, mouvement, lumière), etc.
+VIEWS
+- pouvoir faire son propre classement, sur n'importe quel item (mot de japonais, personnage, musique, couleur, trope, kink, dessinateur, etc.)
+- offrir différents jeux : ranking by tiers, smash or pass, etc.
+- permettre aux utilisateurs de créer des templates (ex: tier list) et de voter pour ces templates
+MISC
+- permettre un accès 18+ : actrices porno, tags comme : big ass
+- possibilité de voter en anonyme, pour préférences personnelles, mais pas assumées en public.
+- valorisation de la commu : trophées, karma, experts, éclaireurs, affinités entre users, etc.
+-> espace d'échange et de discussion, comme sur Wikipedia, roles
+- description / débat sur le tag ou l'association de tags (comme sur wikipedia)
+- valoriser les votes, comme sur senscritique
+TECH
+- conception : mcd : schéma de bdd + relations. vues. composants. auth.
+- moteur de tag : solr, elasticsearch, etc. ?
+- import de données depuis d'autres sites : posts likés sur youtube, réseaux sociaux, etc.
+- export vers  IA, pour générer image, par exemple
+- enregistrer les vues par compte ou ip ?
+-----------
+- ! peupler la base : associaton de tags, votes
+- !! flat, ou hiérarchie ?
+-> blue -> eyes OU eyes -> blue
+- 1 miruko + squat
+- 2 android_18 + from_behind
+- 3 miruko + squat + android_18 + from_behind
+X -> renforce les sous groupes de tags, mais risque de les renforcer pour tout autre groupe :
+X - 3 miruko + from_behind + android_18 + squat
+- !! votes VS ce qu'on veut décrire : nécessite une hierarchie ?
+-> oui, mais pas uniquement par couple (groupe ?) de tags :
+- (miruko(view from_front)(position squat)(smile clenched_teeth))(c18(view from_behind)looking_back(position standing)(hand right_side holding gun))
+- {"miruko": ["view from_front","position squat","smile clenched_teeth"],"c18": ["view from_behind","looking_back","position standing","hand right_side holding gun"]}
+- miruko:view from_front,position squat,smile clenched_teeth.c18:view from_behind,position standing,looking_back,hand right_side holding gun:wooden..
+- [["miruko,view from_front,position squat,smile clenched_teeth",1,1],["c18,view from_behind,position standing,looking_back,hand right_side holding gun:wooden",1,1]]
+- 2girls_A_and_B, {A girl have (white hair) (blue eyes) (white pink frill dress) (white bow) (view from front)}, {B girl have (black hair) (red eyes) (black frill dress) (black bow) (view from behind) (looking back)}
+-> ajouter moyen de décrire la composition d'une image (regional prompter):
+- from left to right, top to bottom: "description":"nb_col, nb_lines"
+- [[["blue sky",2,1],["green hair twintail",1,1],["book shelf",1,1]],[["terrarium on the desk",1,1],[["orange dress","sofa"],2,2]]]
+- [["blue sky,green hair twintail,book shelf","terrarium on the desk,[orange dress,sofa]"],[2,1,1,1,2],[1,1,1,1,2]]
+-> système qui permet de chercher et associr les tags et de le voir en format intelligible en json, avant de le valider.
+-> puis système pour stocker automatiquement en BDD ce document json en le découpant (pour pouvoir voter / trier chaque élément).
+--------
+tags:
+id label
+1 miruko
+2 view
+3 from_front
+4 position
+5 squat
+6 smile
+7 clenched_teeth
+8 c18
+9 from_behind
+10 standing
+11 hand
+12 right_side
+13 holding
+14 gun
+assoc:
+num sub_assoc_id tag_id
+(miruko)
+1 0 2
+1 0 3
+2 0 4
+2 0 5
+3 0 6
+3 0 7
+4 1 1
+4 2 1
+4 3 1
+(c18)
+5 0 2
+5 0 9
+6 0 4
+6 0 10
+7 0 11
+7 0 12
+7 0 13
+7 0 14
+8 5 8
+8 6 8
+8 7 8
+(scene)
+9 4 0
+9 8 0
+
+
+
+- trier ou regrouper les tags : ex, les traits physiques : en associant au tags "physical" et qu'il soit voté
+- pouvoir naviger dans les associations de tags, en sélectionnant un ou plusieur tags
+- puis +  pour le ajouter, comme sur
+
+tag : label, sous tag id 1 (opt), sous tag id 2 (opt)
+- 1: miruko, null, null
+- 2: waifu, null, null
+- 3: null, 1, 2
+- 4: mood
+- 5: like
+- 6: null, 4, 5
+- 7: null, 6, 1 ((mood + like) + miurko)
+- 8: null, 3, 6 ((mood + like) + (miurko + waifu))
+OU
+tags :
+- 1 miruko
+- 2 waifu
+- 3 thick
+- 4 glasses
+- 5 bikini
+assoc :
+- 1 tag_id "1,2,3"
+- 2 tag_id "1,2,3,5"
+ou
+- 1 tag_id 1
+- 1 tag_id 2
+- 1 tag_id 3
+- 2 tag_id 1
+- 2 tag_id 2
+- 2 tag_id 3
+- 2 tag_id 5
+-> permet de faire des stats rapidement, sur la popularité, pour chaque tag qui compose l'assoc
+
