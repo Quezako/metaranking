@@ -1,0 +1,52 @@
+{
+    "word_ja": "食べる[たべる]",
+    {
+        "translate_fr": [
+            "manger",
+            "je mange (poli)"
+        ],
+        "translate_en": [
+            "to eat",
+            "i eat (polite)"
+        ],
+        "sound": [
+            "192V.mp3",
+            "1b79ec85-b9c5-51ad-a787-5da2b4871a4d.mp3",
+            "c5ba2f95-123e-5722-b662-9546d86b5549.mp3"
+        ],
+        "img": [
+            "quizlet-0wQKeHeX6Nqbsn2UiVAaXg.jpg",
+            "quizlet-ak-XE27SF7HiKxh3ZGuA-A.jpg",
+            "quizlet-aIMCBja3z_4sWeuetpEnHg.jpg"
+        ],
+        "dict": "0:た",
+        "menmo_read_en": [
+            "<b>eat</b>ing some <u>ta</u>cos."
+        ],
+        "sentence": [
+            {
+                "ja": "昨日[きのう]タイカレーを<b> 食[た]べました</b>。",
+                "fr": "J'ai mangé un curry thaï hier.",
+                "sound": "192S.mp3",
+                "img": "CtNzmSKR9f5A.jpg"
+            },
+            {
+                "ja": "2-昨日[きのう]タイカレーを<b> 食[た]べました</b>。",
+                "fr": "2-J'ai mangé un curry thaï hier.",
+                "sound": "2-192S.mp3",
+                "img": "2-CtNzmSKR9f5A.jpg"
+            }
+        ],
+        "tags": [
+            "Common",
+            "Ezoe::Voc::Beg1::Chap1::7-A08",
+            "JLPT::5",
+            "JLPT::K1::5",
+            "JouYou::K1::2",
+            "MnN::1-1::06",
+            "Verb::2nd-/-いちだん",
+            "Verb::Main",
+            "Verb::Transit::Transitive"
+        ]
+    }
+}
